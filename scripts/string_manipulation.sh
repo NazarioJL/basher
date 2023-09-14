@@ -21,6 +21,17 @@ done
 
 echo "${result[*]}"
 
+# Split string using 'tr'
+my_str_3="hh:ii:jj"
+
+result=($(echo "${my_str_3}" | tr ":" "\n"))
+echo "${result[*]}"
+
+# Does not complain with SC2207
+mapfile -t result < <(echo "${my_str_3}" | tr ":" "\n")
+echo "${result[*]}"
+
+
 # Remove whitespace from string
 my_str="This has  a lot of space "
 without_space=$(echo "${my_str}" | tr -d ' ')
